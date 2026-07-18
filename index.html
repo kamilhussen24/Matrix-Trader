@@ -216,16 +216,19 @@
 </div>
 
 <script>
+// 🔴 এখানে true/false বদলে Purchase ইভেন্ট চালু/বন্ধ করো
+const TRACK_PURCHASE = true; // true = ইভেন্ট চালু, false = বন্ধ
+
 (function() {
     const btn = document.getElementById('joinTelegramBtn');
     if (!btn) return;
 
     // বাটনে ক্লিক করলে Purchase ইভেন্ট ফায়ার হবে, তারপর Telegram-এ যাবে
     btn.addEventListener('click', function(e) {
-        if (typeof fbq === 'function') {
+        if (TRACK_PURCHASE && typeof fbq === 'function') {
             fbq('track', 'Purchase', {
                 currency: 'BDT',
-                value: 0
+                value: 100
             });
         }
         // link href দিয়ে স্বাভাবিকভাবেই নতুন ট্যাবে খুলবে, popup block-এর ঝামেলা নেই
